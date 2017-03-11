@@ -75,7 +75,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TitleAppear.cs" />
     <Compile Include="Assets\scripts\Boost.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
     <Compile Include="Assets\scripts\DeadzoneCamera.cs" />
@@ -84,6 +83,7 @@
     <Compile Include="Assets\scripts\HoldCharacter.cs" />
     <Compile Include="Assets\scripts\Restart.cs" />
     <Compile Include="Assets\scripts\RotatePlatform.cs" />
+    <Compile Include="Assets\scripts\TitleAppear.cs" />
     <Compile Include="Assets\scripts\mapRotate.cs" />
     <Compile Include="Assets\scripts\menuMusic.cs" />
     <Compile Include="Assets\scripts\platformMovement.cs" />
