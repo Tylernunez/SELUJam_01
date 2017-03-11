@@ -11,7 +11,13 @@ public class playerController : MonoBehaviour {
     public Rigidbody rb;
     private float distToGround;
     public float speed = 6.0f;
+    public float acceleration = 6.0f;
     public Camera MainCamera;
+    private Vector3 movement;
+    private float horizontalMovement;
+    private float verticalMovement;
+    public MeshRenderer rend;
+
 
     void Start()
     {
@@ -19,6 +25,7 @@ public class playerController : MonoBehaviour {
         Collider col = this.GetComponent<Collider>();
         distToGround = col.bounds.extents.y;
         Cursor.lockState = CursorLockMode.Locked;
+        rb.maxAngularVelocity = 100;
     }
 
     void FixedUpdate()
@@ -27,24 +34,44 @@ public class playerController : MonoBehaviour {
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        if (Input.GetKey(KeyCode.Space) && IsGrounded()) //jump
-        {
-            rb.AddForce(new Vector3(0, 1 * thrust, 0), ForceMode.Impulse);
-        }
+       
         if (IsGrounded())
         {
-            float horizontalMovement = Input.GetAxis("Horizontal");
-            float verticalMovement = Input.GetAxis("Vertical");
+            horizontalMovement = Input.GetAxis("Horizontal");
+            verticalMovement = Input.GetAxis("Vertical");
 
-            Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
-            movement = Camera.main.transform.TransformDirection(movement);
+            movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+            movement = Camera.main.transform.TransformDirection(movement * acceleration);
+            if(verticalMovement < 0)
+            {
+                rb.AddForce(movement * speed * acceleration * 2 * Time.deltaTime, ForceMode.Force);
+            }
+            else
+            {
+                rb.AddForce(movement * speed * acceleration * Time.deltaTime, ForceMode.Acceleration);
+            }
+            
 
-            rb.AddForce(movement * speed * Time.deltaTime);
         }
         else
         {
-            rb.AddForce(0,-4f,0);
+            horizontalMovement = Input.GetAxis("Horizontal");
+            verticalMovement = Input.GetAxis("Vertical");
+
+            movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+            movement = Camera.main.transform.TransformDirection(movement);
+
+            rb.AddForce((movement * speed * acceleration * Time.deltaTime) );
+            rb.AddForce(new Vector3(0,-2.0f,0),ForceMode.VelocityChange);
+            
         }
+        if (Input.GetKey(KeyCode.Space) && IsGrounded()) //jump
+        {
+            Vector3 upwardMovement = new Vector3(0, thrust * speed, 0);
+            rb.AddForce(upwardMovement);
+        }
+
+
     }
     bool IsGrounded()
     {
