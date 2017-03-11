@@ -75,11 +75,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FollowCamera.cs" />
+    <Compile Include="Assets\scripts\Acceleration.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
+    <Compile Include="Assets\scripts\FollowCamera.cs" />
     <Compile Include="Assets\scripts\FollowMe.cs" />
+    <Compile Include="Assets\scripts\Restart.cs" />
     <Compile Include="Assets\scripts\mapRotate.cs" />
     <Compile Include="Assets\scripts\playerController.cs" />
+    <Compile Include="Assets\scripts\roundStart.cs" />
     <Compile Include="Assets\scripts\sceneManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

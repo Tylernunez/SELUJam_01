@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour {
 
@@ -21,7 +22,11 @@ public class playerController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space) && IsGrounded())
+        if (Input.GetKey("r")) //restart
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (Input.GetKey(KeyCode.Space) && IsGrounded()) //jump
         {
             rb.AddForce(new Vector3(0, 1 * thrust, 0), ForceMode.Impulse);
         }
@@ -35,11 +40,20 @@ public class playerController : MonoBehaviour {
 
             rb.AddForce(movement * speed * Time.deltaTime);
         }
-
+        else
+        {
+            rb.AddForce(0,-4f,0);
+        }
     }
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
-
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Element"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }
