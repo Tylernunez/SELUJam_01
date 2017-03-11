@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour {
     public Rigidbody rb;
     private float distToGround;
     public float speed = 6.0f;
+    public Camera MainCamera;
 
     void Start()
     {
@@ -32,7 +33,10 @@ public class playerController : MonoBehaviour {
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
 
-        rb.AddForce(new Vector3(horizontalMovement * speed, 0, verticalMovement * speed));
+        Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+        movement = Camera.main.transform.TransformDirection(movement);
+
+        rb.AddForce(movement * speed * Time.deltaTime);
     }
     bool IsGrounded()
     {
