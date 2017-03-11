@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class roundStart : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class roundStart : MonoBehaviour
                 if(complete == true)
                 {
                 text.text = "Congratulations!";
+                SceneManager.LoadScene("levelselect");
                 }    
             }
 
