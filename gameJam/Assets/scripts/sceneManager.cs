@@ -13,8 +13,7 @@ public class sceneManager : MonoBehaviour {
 
 	public void setMainMenu()
 	{
-
-		LoadScene("mainmenu");
+        StartCoroutine(AddDelayMainMenu());
 	}
 
 	public void setExitGame()
@@ -23,17 +22,36 @@ public class sceneManager : MonoBehaviour {
 	}
 	public void setLevelSelect()
 	{
-
-		LoadScene("levelselect");
+        StartCoroutine(AddDelayLevelSelect());
 	}
 	public void setLeveltest()
 	{
-
 		LoadScene("mapMoveTest");
 	}
     public void setHelp()
     {
-
-        LoadScene("help");
+        StartCoroutine(AddDelayHelp());
+    }
+    public void setRestartLevel()
+    {
+        LoadScene(SceneManager.GetActiveScene().name);
+    }
+    IEnumerator AddDelayLevelSelect()
+    {
+        // Do something
+        yield return new WaitForSeconds(.3f);  // Wait three seconds
+        LoadScene("levelselect");                                      // Do something else
+    }
+    IEnumerator AddDelayHelp()
+    {
+        // Do something
+        yield return new WaitForSeconds(.3f);  // Wait three seconds
+        LoadScene("help");                                      // Do something else
+    }
+    IEnumerator AddDelayMainMenu()
+    {
+        // Do something
+        yield return new WaitForSeconds(.3f);  // Wait three seconds
+        LoadScene("mainmenu");                                      // Do something else
     }
 }
