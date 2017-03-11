@@ -44,31 +44,26 @@ public class playerController : MonoBehaviour {
             movement = Camera.main.transform.TransformDirection(movement * acceleration);
             if(verticalMovement < 0)
             {
-                rb.AddForce(movement * speed * acceleration * 2 * Time.deltaTime, ForceMode.Force);
+                movement = Camera.main.transform.TransformDirection(movement * acceleration);
             }
             else
             {
-                rb.AddForce(movement * speed * acceleration * Time.deltaTime, ForceMode.Acceleration);
+                rb.AddForce(movement * speed * acceleration * Time.deltaTime, ForceMode.Impulse);
             }
             
 
         }
         else
         {
-            horizontalMovement = Input.GetAxis("Horizontal");
-            verticalMovement = Input.GetAxis("Vertical");
 
-            movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
             movement = Camera.main.transform.TransformDirection(movement);
-
-            rb.AddForce((movement * speed * acceleration * Time.deltaTime) );
-            rb.AddForce(new Vector3(0,-2.0f,0),ForceMode.VelocityChange);
+            rb.AddForce(new Vector3(0,-1.0f,0),ForceMode.VelocityChange);
             
         }
         if (Input.GetKey(KeyCode.Space) && IsGrounded()) //jump
         {
             Vector3 upwardMovement = new Vector3(0, thrust * speed, 0);
-            rb.AddForce(upwardMovement);
+            rb.AddForce(upwardMovement, ForceMode.Acceleration);
         }
 
 
