@@ -15,6 +15,7 @@ public class playerController : MonoBehaviour {
     private Vector3 movement;
     private float horizontalMovement;
     private float verticalMovement;
+    public MeshRenderer rend;
 
 
     void Start()
@@ -23,6 +24,7 @@ public class playerController : MonoBehaviour {
         Collider col = this.GetComponent<Collider>();
         distToGround = col.bounds.extents.y;
         Cursor.lockState = CursorLockMode.Locked;
+        rb.maxAngularVelocity = 100;
     }
 
     void FixedUpdate()
@@ -38,9 +40,17 @@ public class playerController : MonoBehaviour {
             verticalMovement = Input.GetAxis("Vertical");
 
             movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
-            movement = Camera.main.transform.TransformDirection(movement);
+            movement = Camera.main.transform.TransformDirection(movement * acceleration);
+            if(verticalMovement < 0)
+            {
+                rb.AddForce(movement * speed * acceleration * 2 * Time.deltaTime, ForceMode.Force);
+            }
+            else
+            {
+                rb.AddForce(movement * speed * acceleration * Time.deltaTime, ForceMode.Acceleration);
+            }
+            
 
-            rb.AddForce(movement * speed * acceleration * Time.deltaTime);
         }
         else
         {
@@ -50,7 +60,7 @@ public class playerController : MonoBehaviour {
             movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
             movement = Camera.main.transform.TransformDirection(movement);
 
-            rb.AddForce((movement * speed * acceleration * Time.deltaTime) / 2);
+            rb.AddForce((movement * speed * acceleration * Time.deltaTime) );
             rb.AddForce(new Vector3(0,-2.0f,0),ForceMode.VelocityChange);
             
         }
@@ -59,6 +69,7 @@ public class playerController : MonoBehaviour {
             Vector3 upwardMovement = new Vector3(0, thrust * speed, 0);
             rb.AddForce(upwardMovement);
         }
+
 
     }
     bool IsGrounded()
