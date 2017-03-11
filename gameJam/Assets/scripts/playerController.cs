@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour {
 
@@ -54,6 +55,10 @@ public class playerController : MonoBehaviour {
         if (other.gameObject.CompareTag("Element"))
         {
             other.gameObject.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("Deadzone"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

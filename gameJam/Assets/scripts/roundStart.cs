@@ -6,22 +6,34 @@ using UnityEngine;
 public class roundStart : MonoBehaviour
 {
     float timeLeft = 3.0f;
-
+    float timeStart = -2.0f;
+    bool complete = false;
+    bool intro = true;
     public Text text;
 
     void Update()
     {
-        timeLeft -= Time.deltaTime;
-        text.text = "" + Mathf.Round(timeLeft);
-        if (timeLeft < 0)
-        {
-            text.text = "GO!";
+            timeLeft -= Time.deltaTime;
+            timeStart += Time.deltaTime; 
+            text.text = "" + Mathf.Round(timeLeft);
+            if (timeLeft < 0.5)
+            {
+                text.text = "GO!";
+            }
+            if (timeLeft < 0)
+            {
+                text.text = "" + Mathf.Round(timeStart);
+            }
+            
         }
-    }
-
-void TimerStart()
+        }
+    
+   /* void LateUpdate()
     {
         double timer = 0.0;
-        timer += Time.deltaTime;
-    }
-}
+        if (timeLeft < 0)
+        {
+            timer += Time.deltaTime;
+            text.text = "" + timer;
+        }
+    }*/

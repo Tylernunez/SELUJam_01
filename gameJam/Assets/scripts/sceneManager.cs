@@ -36,4 +36,8 @@ public class sceneManager : MonoBehaviour {
 
         LoadScene("help");
     }
+    public void setRestartLevel()
+    {
+        LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
