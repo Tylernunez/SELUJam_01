@@ -23,10 +23,22 @@ public class roundStart : MonoBehaviour
             if (timeLeft < 0)
             {
                 text.text = "" + Mathf.Round(timeStart);
+                if(complete == true)
+                {
+                text.text = "Congratulations!";
+                }    
             }
+
+
             
-        }
-        }
+    }
+
+    public void victory()
+    {
+        complete = true;
+        
+    }
+}
     
    /* void LateUpdate()
     {
