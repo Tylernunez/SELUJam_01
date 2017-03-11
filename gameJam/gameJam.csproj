@@ -75,13 +75,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ClickSound.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
     <Compile Include="Assets\scripts\DeadzoneCamera.cs" />
     <Compile Include="Assets\scripts\FollowCamera.cs" />
     <Compile Include="Assets\scripts\FollowMe.cs" />
     <Compile Include="Assets\scripts\Restart.cs" />
     <Compile Include="Assets\scripts\mapRotate.cs" />
+    <Compile Include="Assets\scripts\menuMusic.cs" />
     <Compile Include="Assets\scripts\playerController.cs" />
     <Compile Include="Assets\scripts\roundStart.cs" />
     <Compile Include="Assets\scripts\sceneManager.cs" />
