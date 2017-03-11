@@ -44,7 +44,7 @@ public class playerController : MonoBehaviour {
             movement = Camera.main.transform.TransformDirection(movement * acceleration);
             if(verticalMovement < 0)
             {
-                movement = Camera.main.transform.TransformDirection(movement * acceleration);
+                rb.AddForce(movement * speed  * Time.deltaTime, ForceMode.Impulse);
             }
             else
             {
