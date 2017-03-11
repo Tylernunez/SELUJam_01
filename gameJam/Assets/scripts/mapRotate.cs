@@ -11,8 +11,8 @@ public class mapRotate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float horizontalMovement = Input.GetAxis("Mouse X");
-		float verticalMovement = Input.GetAxis("Mouse Y");
+		float horizontalMovement = Input.GetAxis("Vertical");
+		float verticalMovement = Input.GetAxis("Horizontal");
 		transform.Rotate(horizontalMovement, verticalMovement,0);
 	}
 }
