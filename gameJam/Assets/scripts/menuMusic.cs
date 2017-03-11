@@ -5,7 +5,7 @@ using UnityEngine;
 public class menuMusic : MonoBehaviour
 {
 
-    static bool AudioBegin = false;
+   /* static bool AudioBegin = false;
     void Awake()
     {
         if (!AudioBegin)
@@ -21,5 +21,5 @@ public class menuMusic : MonoBehaviour
         {
             Destroy(this.gameObject);
         }*/
-    }
+ //   }
 }
