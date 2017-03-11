@@ -28,6 +28,10 @@ public class sceneManager : MonoBehaviour {
 	{
 		LoadScene("mapMoveTest");
 	}
+    public void setLevel2()
+    {
+        LoadScene("level2");
+    }
     public void setHelp()
     {
         StartCoroutine(AddDelayHelp());
