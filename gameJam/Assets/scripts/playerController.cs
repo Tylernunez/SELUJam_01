@@ -8,6 +8,7 @@ public class playerController : MonoBehaviour {
     public float thrust = 6.0f;
     public Rigidbody rb;
     private float distToGround;
+    public float speed = 6.0f;
 
     void Start()
     {
@@ -22,9 +23,16 @@ public class playerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
             rb.AddForce(new Vector3(0, 1 * thrust, 0), ForceMode.Impulse);
-            print("The space bar was pressed.");
         }
+        
             
+    }
+    void Update()
+    {
+        float horizontalMovement = Input.GetAxis("Horizontal");
+        float verticalMovement = Input.GetAxis("Vertical");
+
+        rb.AddForce(new Vector3(horizontalMovement * speed, 0, verticalMovement * speed));
     }
     bool IsGrounded()
     {
