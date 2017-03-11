@@ -75,7 +75,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\Acceleration.cs" />
     <Compile Include="Assets\scripts\CameraControl.cs" />
     <Compile Include="Assets\scripts\FollowCamera.cs" />
     <Compile Include="Assets\scripts\FollowMe.cs" />
