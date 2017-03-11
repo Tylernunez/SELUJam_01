@@ -31,4 +31,9 @@ public class sceneManager : MonoBehaviour {
 
 		LoadScene("mapMoveTest");
 	}
+    public void setHelp()
+    {
+
+        LoadScene("help");
+    }
 }
