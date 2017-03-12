@@ -62,8 +62,7 @@ public class playerController : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Space) && IsGrounded()) //jump
         {
-            Vector3 upwardMovement = new Vector3(0, thrust * speed, 0);
-            rb.AddForce(upwardMovement, ForceMode.Acceleration);
+            rb.velocity += thrust * Vector3.up;
         }
 
 

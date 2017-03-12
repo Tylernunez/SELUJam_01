@@ -15,6 +15,7 @@ public class FollowMe : MonoBehaviour
     public void Update()
     {
         transform.position = player.transform.position + _offset;
+    
     }
 }
     

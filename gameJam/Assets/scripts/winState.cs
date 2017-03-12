@@ -12,6 +12,6 @@ public class winState : MonoBehaviour {
             roundStart rs = other.GetComponent<roundStart>();
             rs.victory();
             print("sick.");
-        
+            Cursor.lockState = CursorLockMode.None;
     }
 }
